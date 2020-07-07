@@ -7,13 +7,12 @@ std::string Clipboard::GetData()
 	OpenClipboard(NULL);
 	HANDLE data = GetClipboardData(CF_TEXT);
 	char *buffer = (char*)GlobalLock(data);
-	//std::string ss(buffer);
-	//std::wstring wss(ss.begin(), ss.end());
+	std::string ss(buffer);
 	GlobalUnlock(data);
 	CloseClipboard();
 	if (data != NULL) 
 	{
-		return "NULL";
+		return ss;
 	}
 	else 
 	{
